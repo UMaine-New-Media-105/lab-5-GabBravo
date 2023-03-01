@@ -1,0 +1,62 @@
+let x;
+let speedX;
+let y;
+let speedY;
+
+function setup() {
+  createCanvas(400, 400);
+
+  x = random(304);
+  speedX = 2;
+  y = random(304);
+  speedY = 4;
+}
+
+function draw() {
+  background(220);
+  addFace(x, y, 0.5);
+
+  x = x + speedX;
+  y = y + speedY;
+
+  if (x > 304) {
+    speedX = -2;
+  }
+  if (x < 2) {
+    speedX = 2;
+  }
+
+  if (y > 304) {
+    speedY = -4;
+  }
+  if (y < 2) {
+    speedY = 4;
+  }
+}
+
+function addFace(x, y, size) {
+  push();
+  translate(x, y);
+  scale(size);
+
+  push();
+  translate(-5, -5);
+  scale(0.5);
+  //head
+  fill("tan");
+  ellipse(200, 200, 380);
+  //eyes
+  fill("whitesmoke");
+  ellipse(130, 150, 95, 140);
+  ellipse(270, 150, 95, 140);
+  //pupils
+  fill("black");
+  ellipse(130, 160, 55, 100);
+  ellipse(270, 160, 55, 100);
+  //mouth
+  fill("black");
+  rect(150, 260, 150, 30);
+  pop();
+
+  pop();
+}
